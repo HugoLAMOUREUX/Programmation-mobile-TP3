@@ -17,6 +17,11 @@ import java.util.List;
 
 public class TacheAdapter extends RecyclerView.Adapter<TacheAdapter.MyViewHolder> {
     protected List<Tache> mesTaches;
+    protected InterfaceLesTaches interfaceLesTaches;
+    public TacheAdapter(List<Tache> l, InterfaceLesTaches inter){
+        mesTaches=l;
+        interfaceLesTaches=inter;
+    }
     public TacheAdapter(List<Tache> l){
         mesTaches=l;
     }
@@ -77,14 +82,7 @@ public class TacheAdapter extends RecyclerView.Adapter<TacheAdapter.MyViewHolder
         }
 
         holder.itemView.setOnClickListener((view) -> {
-            Log.d("onClick", "tache" + mesTaches.get(position).getNom());
-            Intent intent = new Intent(view.getContext(), DetailTacheActivity.class);
-
-            intent.putExtra(Constantes.TACHE, tache.getNom());
-            intent.putExtra(Constantes.DUREE, tache.getDuree());
-            intent.putExtra(Constantes.DESCRIPTION, tache.getDescription());
-            intent.putExtra(Constantes.CATEGORIE, tache.getCategorie().toString());
-            view.getContext().startActivity(intent);
+            interfaceLesTaches.tacheSelectionne(tache);
         });
 /*
         holder.itemView.setOnLongClickListener((view) -> {

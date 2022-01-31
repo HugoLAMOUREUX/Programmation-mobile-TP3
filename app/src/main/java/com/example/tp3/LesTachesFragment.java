@@ -1,5 +1,6 @@
 package com.example.tp3;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ public class LesTachesFragment extends Fragment {
     private RecyclerView recyclerView;
     private List<Tache> mesTaches;
     private TacheAdapter tacheAdapter;
+    private InterfaceLesTaches interfaceLesTaches;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -31,7 +33,7 @@ public class LesTachesFragment extends Fragment {
         initTaches();
 
         recyclerView =(RecyclerView) v.findViewById(R.id.idList);
-        tacheAdapter=new TacheAdapter(mesTaches);
+        tacheAdapter=new TacheAdapter(mesTaches,interfaceLesTaches);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this.getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -41,6 +43,14 @@ public class LesTachesFragment extends Fragment {
 
         return v;
 
+    }
+
+    @Override
+    public void onAttach(Context context){
+        super.onAttach(context);
+        if(context instanceof InterfaceLesTaches){
+            interfaceLesTaches=(InterfaceLesTaches) context;
+        }
     }
 
     public void initTaches(){
