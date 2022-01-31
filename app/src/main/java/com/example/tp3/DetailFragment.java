@@ -22,6 +22,7 @@ public class DetailFragment extends Fragment {
     private ImageView cat;
     private TextView description;
 
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,11 +34,11 @@ public class DetailFragment extends Fragment {
         return v;
     }
 
+
     public void set(String t,String d,String c,String descr){
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
              public void run() {
-
                 tache.setText(t);
                 duree.setText(d);
                 description.setText(descr);

@@ -53,6 +53,20 @@ public class LesTachesFragment extends Fragment {
         }
     }
 
+    public void ajouterBtn2(){
+        Intent intent=new Intent(getView().getContext(),AjoutActivity.class);
+        startActivityForResult(intent,Constantes.REQUEST_CODE);
+    }
+
+    public void onActivityResult(int requestCode,int resultCode, Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+        if((resultCode==Constantes.CODE_OK)&&(requestCode==Constantes.REQUEST_CODE)){
+            Tache t=new Tache(data.getStringExtra(Constantes.TACHE),data.getStringExtra(Constantes.CATEGORIE),data.getStringExtra(Constantes.DUREE),data.getStringExtra(Constantes.DESCRIPTION));
+            ajoutTache(t);
+        }
+    }
+
+
     public void initTaches(){
         Tache t1=new Tache("footing","Sport","60","course de Yvan");
         Tache t2=new Tache("travail","Travail","190","Etude pratique");

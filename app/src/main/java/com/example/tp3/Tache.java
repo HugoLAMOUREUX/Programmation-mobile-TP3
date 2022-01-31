@@ -1,10 +1,44 @@
 package com.example.tp3;
 
-public class Tache {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Tache implements Parcelable {
     private String nom;
     private int duree;
     private String description;
     private Categorie categorie;
+
+    protected Tache(Parcel in) {
+        nom = in.readString();
+        duree = in.readInt();
+        description = in.readString();
+    }
+
+    public static final Tache.Creator<Tache> CREATOR = new Creator<Tache>() {
+        @Override
+        public Tache createFromParcel(Parcel in) {
+            return new Tache(in);
+        }
+
+        @Override
+        public Tache[] newArray(int size) {
+            return new Tache[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return CONTENTS_FILE_DESCRIPTOR;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(nom);
+        parcel.writeInt(duree);
+        parcel.writeString(description);
+        parcel.writeString(categorie.name());
+    }
 
     public enum Categorie {
         Autre, Travail, Sport, Menage, Lecture, Enfants, Courses

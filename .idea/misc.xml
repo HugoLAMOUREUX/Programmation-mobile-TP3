@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/hugol/Desktop/Code/3A INFO/Programmation mobile/TP3/app/src/main/res/layout-land/activity_main.xml" value="0.11022927689594356" />
+        <entry key="..\:/Users/hugol/Desktop/Code/3A INFO/Programmation mobile/TP3/app/src/main/res/layout/activity_ajout.xml" value="0.2513586956521739" />
         <entry key="..\:/Users/hugol/Desktop/Code/3A INFO/Programmation mobile/TP3/app/src/main/res/layout/activity_detail_tache.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/hugol/Desktop/Code/3A INFO/Programmation mobile/TP3/app/src/main/res/layout/activity_main.xml" value="0.1403985507246377" />
+        <entry key="..\:/Users/hugol/Desktop/Code/3A INFO/Programmation mobile/TP3/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/hugol/Desktop/Code/3A INFO/Programmation mobile/TP3/app/src/main/res/layout/detailactivityfragment.xml" value="0.1403985507246377" />
         <entry key="..\:/Users/hugol/Desktop/Code/3A INFO/Programmation mobile/TP3/app/src/main/res/layout/layout_fragment_list_tache.xml" value="0.1403985507246377" />
         <entry key="..\:/Users/hugol/Desktop/Code/3A INFO/Programmation mobile/TP3/app/src/main/res/layout/tache.xml" value="0.1403985507246377" />
