@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".DetailTacheActivity">
 
-    <androidx.fragment.app.FragmentContainerView
+    <fragment
         android:id="@+id/idDetail"
         android:name="com.example.tp3.DetailFragment"
         android:layout_width="0dp"

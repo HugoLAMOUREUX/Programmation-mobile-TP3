@@ -9,6 +9,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements InterfaceLesTaches{
@@ -16,6 +17,12 @@ public class MainActivity extends AppCompatActivity implements InterfaceLesTache
     private LesTachesFragment fragmentLesTaches;
     private DetailFragment fragmentDetail;
     private FragmentManager fm;
+
+    private TextView tache;
+    private TextView duree;
+    private ImageView cat;
+    private TextView description;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,21 +32,25 @@ public class MainActivity extends AppCompatActivity implements InterfaceLesTache
         fm=this.getSupportFragmentManager();
         fragmentLesTaches =(LesTachesFragment) fm.findFragmentById(R.id.idFragmentList);
         fragmentDetail= (DetailFragment) fm.findFragmentById(R.id.idDetail);
+
+
+        tache=findViewById(R.id.tacheId);
+        duree=findViewById(R.id.dureeId);
+        cat=findViewById(R.id.imgId);
+        description=findViewById(R.id.descriptionId);
     }
 
+    /* Lancement de AjoutActivity (via le fragment) */
     public void ajouterBtn(View view){
         fragmentLesTaches.ajouterBtn2();
     }
 
 
+    /* En paysage, affiche les informations de la tâches sur la partie droite de l'écran, en portrait lance l'activité DetailTacheActivity */
     public void tacheSelectionne(Tache t){
         int orientation = getResources().getConfiguration().orientation;
         if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            TextView test=findViewById(R.id.tacheId);
-            test.setText("Bonjour");
-            Log.d("valeur", test.getText().toString());
-            Log.d("test","test");
-            fragmentDetail.set("pifiudhu","12","Sport","chiennenene");
+            set(t.getNom(),t.getDuree()+" min",t.getCategorie()+"",t.getDescription());
         } else {
             Intent intent = new Intent(this, DetailTacheActivity.class);
 
@@ -51,10 +62,45 @@ public class MainActivity extends AppCompatActivity implements InterfaceLesTache
         }
 
     }
-    /*public void ajoutOnClick(View view){
-        fragmentLesTaches.ajoutTache(new Tache("App Mobile","Travail","120","tp3"));
 
-    }*/
+    /* Méthode qui set les données aux TextView et ImageView du fragment DetailFragment */
+    public void set(String t,String d,String c,String descr){
+        tache.setText(t);
+        duree.setText(d);
+        description.setText(descr);
+        switch (c){
+            case "Sport": {
+                cat.setImageResource(R.drawable.sport);
+                break;
+            }
+            case "Enfants": {
+                cat.setImageResource(R.drawable.enfant);
+                break;
+            }
+            case "Courses": {
+                cat.setImageResource(R.drawable.courses);
+                break;
+            }
+            case "Menage": {
+                cat.setImageResource(R.drawable.menage);
+                break;
+            }
+            case "Lecture": {
+                cat.setImageResource(R.drawable.lecture);
+                break;
+            }
+            case "Travail": {
+                cat.setImageResource(R.drawable.travail);
+                break;
+            }
+            case "Autre": {
+                cat.setImageResource(R.drawable.point_interro_);
+                break;
+            }
+        }
 
+    }
 
 }
+
+

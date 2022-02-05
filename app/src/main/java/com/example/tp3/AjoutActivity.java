@@ -38,14 +38,16 @@ public class AjoutActivity extends AppCompatActivity {
         dropdown.setAdapter(adapter);
     }
 
-
+    /* Fonction lancée quand on appuie sur le bouton OK */
     public void valider(View view){
         Intent data= new Intent();
+        /* Vérification du remplissage de champs */
         if(titre.getText().toString().equals("") || desc.getText().toString().equals("") || duree.getText().toString().equals("") ){
             error=findViewById(R.id.errorTv);
             error.setText("Merci de bien vouloir remplir les champs correctement !");
             return ;
         }
+        /* Passage des données */
         data.putExtra(Constantes.TACHE,""+titre.getText());
         data.putExtra(Constantes.DUREE,""+duree.getText());
         data.putExtra(Constantes.DESCRIPTION,""+desc.getText());

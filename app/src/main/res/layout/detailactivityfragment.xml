@@ -34,7 +34,7 @@
         android:layout_marginBottom="30dp"
         android:layout_weight="0.4"
         android:contentDescription="@string/image"
-        app:srcCompat="@drawable/point_interro_" />
+        app:srcCompat="@drawable/vide" />
 
     <TextView
         android:id="@+id/descriptionId"

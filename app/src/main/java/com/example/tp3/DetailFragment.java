@@ -27,6 +27,8 @@ public class DetailFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View v=inflater.inflate(R.layout.detailactivityfragment,container,false);
+
+
         tache=v.findViewById(R.id.tacheId);
         duree=v.findViewById(R.id.dureeId);
         cat=v.findViewById(R.id.imgId);
@@ -34,11 +36,8 @@ public class DetailFragment extends Fragment {
         return v;
     }
 
-
+    /* Fonction permettant de modifier les données affichées à l'écran */
     public void set(String t,String d,String c,String descr){
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-             public void run() {
                 tache.setText(t);
                 duree.setText(d);
                 description.setText(descr);
@@ -72,10 +71,6 @@ public class DetailFragment extends Fragment {
                         break;
                     }
                 }
-
-           }
-    }, 1);
-
 
     }
 

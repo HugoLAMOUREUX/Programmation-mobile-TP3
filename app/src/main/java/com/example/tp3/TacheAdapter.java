@@ -81,10 +81,12 @@ public class TacheAdapter extends RecyclerView.Adapter<TacheAdapter.MyViewHolder
             }
         }
 
+        /* Listener Clic rapide qui affiche les informations liées à la tâche selectionée */
         holder.itemView.setOnClickListener((view) -> {
             interfaceLesTaches.tacheSelectionne(tache);
         });
-/*
+
+        /* Listener clic long qui lance une pop up demandant si l'utilisateur souhaite vraiment supprimer la tâche, si oui la supprime */
         holder.itemView.setOnLongClickListener((view) -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
             builder.setMessage(R.string.confirmationSupr)
@@ -96,15 +98,14 @@ public class TacheAdapter extends RecyclerView.Adapter<TacheAdapter.MyViewHolder
                     })
                     .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            adapter.notifyDataSetChanged();
                         }
                     });
             builder.create().show();
             return true;
         });
-    }*/
-
     }
+
+
 
     @Override
     public int getItemCount() {

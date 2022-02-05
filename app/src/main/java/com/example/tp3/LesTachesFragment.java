@@ -21,7 +21,7 @@ import java.util.List;
 
 public class LesTachesFragment extends Fragment {
     private RecyclerView recyclerView;
-    private List<Tache> mesTaches;
+    private ArrayList<Tache> mesTaches;
     private TacheAdapter tacheAdapter;
     private InterfaceLesTaches interfaceLesTaches;
 
@@ -30,7 +30,13 @@ public class LesTachesFragment extends Fragment {
         super.onCreate(savedInstanceState);
         View v=inflater.inflate(R.layout.layout_fragment_list_tache,container,false);
 
-        initTaches();
+        /* Vérification si l'application a déja été ouverte */
+        if(savedInstanceState==null) {
+            initTaches();
+        }else{
+            /* Récupération des données */
+            mesTaches=savedInstanceState.getParcelableArrayList(Constantes.LISTE);
+        }
 
         recyclerView =(RecyclerView) v.findViewById(R.id.idList);
         tacheAdapter=new TacheAdapter(mesTaches,interfaceLesTaches);
@@ -53,11 +59,13 @@ public class LesTachesFragment extends Fragment {
         }
     }
 
+    /* Fonction qui envoie vers l'activité AjoutActivity */
     public void ajouterBtn2(){
         Intent intent=new Intent(getView().getContext(),AjoutActivity.class);
         startActivityForResult(intent,Constantes.REQUEST_CODE);
     }
 
+    /* Fonction lancée quand on revient de AjoutActivity et qui permets d'ajouter la tâche donnée */
     public void onActivityResult(int requestCode,int resultCode, Intent data){
         super.onActivityResult(requestCode,resultCode,data);
         if((resultCode==Constantes.CODE_OK)&&(requestCode==Constantes.REQUEST_CODE)){
@@ -66,7 +74,7 @@ public class LesTachesFragment extends Fragment {
         }
     }
 
-
+    /* Initialisation des tâches lors de la première ouverture de l'application */
     public void initTaches(){
         Tache t1=new Tache("footing","Sport","60","course de Yvan");
         Tache t2=new Tache("travail","Travail","190","Etude pratique");
@@ -80,9 +88,14 @@ public class LesTachesFragment extends Fragment {
 
     }
 
+    /* Ajout d'une tâche */
     public void ajoutTache(Tache t){
         mesTaches.add(t);
         tacheAdapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle bundle){
+        bundle.putParcelableArrayList(Constantes.LISTE,mesTaches);
+    }
 }

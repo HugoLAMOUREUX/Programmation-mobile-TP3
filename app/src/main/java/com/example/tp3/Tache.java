@@ -9,10 +9,12 @@ public class Tache implements Parcelable {
     private String description;
     private Categorie categorie;
 
+    /* Constructeur depuis une parcel */
     protected Tache(Parcel in) {
         nom = in.readString();
         duree = in.readInt();
         description = in.readString();
+        categorie = Categorie.valueOf(in.readString());
     }
 
     public static final Tache.Creator<Tache> CREATOR = new Creator<Tache>() {
@@ -32,6 +34,7 @@ public class Tache implements Parcelable {
         return CONTENTS_FILE_DESCRIPTOR;
     }
 
+    /* Méthode pour remplir une parcel avec une Tâche */
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(nom);

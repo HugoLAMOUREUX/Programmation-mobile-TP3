@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">TP3</string>
     <string name="tVide">TextView</string>
-    <string name="desc">Description</string>
-    <string name="image">Image</string>
-    <string name="duree">Duree</string>
-    <string name="titre">Titre</string>
+    <string name="desc"></string>
+    <string name="image"></string>
+    <string name="duree"></string>
+    <string name="titre"></string>
     <string name="logo">Logo</string>
     <string name="t4">Description</string>
     <string name="dureeAjout">Durée</string>
